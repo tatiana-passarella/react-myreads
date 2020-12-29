@@ -7,7 +7,6 @@ class BooksList extends React.Component {
   render() {
     const { books, changeShelf } = this.props
 
- render() {
     return (
       <div className="list-books">
         <div className="list-books-title">
@@ -26,7 +25,6 @@ class BooksList extends React.Component {
 				changeShelf={changeShelf} />
             </div>
           </div>
-        </div>
         <div className="open-search">
           <Link to="/search">Add a book</Link>
         </div>

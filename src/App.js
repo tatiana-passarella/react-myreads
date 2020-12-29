@@ -17,25 +17,27 @@ class BooksApp extends React.Component {
   }
 
 
- changeShelf = (thisBook, shelf) => {
-    BooksAPI.update(thisBook, shelf).then(() => {
+  changeShelf = (theBook, shelf) => {
+    BooksAPI.update(theBook, shelf).then(() => {
       this.setState(prev => {
         let newBook = true;
         prev.books.forEach(book => {
-          if(thisBook.id === book.id)
-            newBook = false; /* the book already exist */
+          if(theBook.id === book.id)
+            newBook = false; /* theBook already exist */
         })
         if(newBook)
-          prev.books.splice(1, 0, thisBook);
+          prev.books.splice(1, 0, theBook);
         return ({
           books: prev.books.map(book => {
-            if(book.id === thisBook.id)
+            if(book.id === theBook.id)
               book.shelf = shelf;
             return book;
           })
           .filter(b => b.shelf !== "none")
         })
       })
+    })
+  }
 
   render() {
     const { books } = this.state;
