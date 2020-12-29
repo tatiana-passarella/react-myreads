@@ -8,49 +8,53 @@ import SearchBook from "./SearchBook";
 class BooksApp extends React.Component {
   state = {
     books: []
-  };
+  }
 
   componentDidMount() {
-    BooksAPI.getAll().then((myBooks) => {
-      this.setState({
-        books: myBooks
-      });
-    });
+    BooksAPI.getAll().then(books => {
+      this.setState({ books });
+    })
   }
 
 
- changeShelf = (book, shelf) => {
-    BooksAPI.update(book, shelf).then(response => {
-      this.getShelf();
-    });
-  };
+ changeShelf = (thisBook, shelf) => {
+    BooksAPI.update(thisBook, shelf).then(() => {
+      this.setState(prev => {
+        let newBook = true;
+        prev.books.forEach(book => {
+          if(thisBook.id === book.id)
+            newBook = false; /* the book already exist */
+        })
+        if(newBook)
+          prev.books.splice(1, 0, thisBook);
+        return ({
+          books: prev.books.map(book => {
+            if(book.id === thisBook.id)
+              book.shelf = shelf;
+            return book;
+          })
+          .filter(b => b.shelf !== "none")
+        })
+      })
 
-  getShelf() {
-    BooksAPI.getAll().then(data => {
-      this.setState({
-        books: data
-      });
-    });
-  }
+  render() {
+    const { books } = this.state;
 
-
-    render() {
     return (
-      <div className="app">
-        <Route exact path='/'
-			render={() => (
-				<BooksList booksOnShelf={this.state.books} />
-			)}
-        />
-        <Route
-          path="/search"
-			render={() => (
-				<SearchBook onChangeShelf={this.changeShelf} booksOnShelf={this.state.books} />
-			)}
-        />
+	<div className="app">
+		<Route exact path="/" 
+			render = {() =>
+      			<BookList booksOnShelf={books} changeShelf={this.changeShelf} />
+  			}
+    	/>
+		<Route path="/search" 
+			render = {() =>
+				<SearchBook booksOnShelf={books} changeShelf={this.changeShelf} />
+			}
+		/>
       </div>
-    );
+    )
   }
 }
 
-export default BooksApp;
+export default BooksApp
