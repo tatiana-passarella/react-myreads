@@ -3,7 +3,7 @@ import * as BooksAPI from './BooksAPI'
 import './App.css'
 import { Route } from 'react-router-dom'
 import BooksList from "./BooksList";
-import SearchBook from "./SearchBook";
+//import SearchBook from "./SearchBook";
 
 class BooksApp extends React.Component {
   state = {
@@ -19,41 +19,39 @@ class BooksApp extends React.Component {
 
   changeShelf = (theBook, shelf) => {
     BooksAPI.update(theBook, shelf).then(() => {
-      this.setState(prev => {
+      this.setState(prevState => {
         let newBook = true;
-        prev.books.forEach(book => {
+        prevState.books.forEach(book => {
           if(theBook.id === book.id)
             newBook = false; /* theBook already exist */
         })
         if(newBook)
-          prev.books.splice(1, 0, theBook);
+          prevState.books.splice(1, 0, theBook);
         return ({
-          books: prev.books.map(book => {
+          books: prevState.books.map(book => {
             if(book.id === theBook.id)
               book.shelf = shelf;
             return book;
           })
-          .filter(b => b.shelf !== "none")
+          .filter(bok => bok.shelf !== "none")
         })
       })
     })
   }
 
   render() {
-    const { books } = this.state;
+    //const { books } = this.state;
 
     return (
 	<div className="app">
 		<Route exact path="/" 
 			render={() =>
-      			<BooksList booksOnShelf={books} changeShelf={this.changeShelf} />
+      			<BooksList books={this.state.books} changeShelf={this.changeShelf} />
   			}
     	/>
-		<Route path="/search" 
-			render={() =>
-				<SearchBook booksOnShelf={books} changeShelf={this.changeShelf} />
-			}
-		/>
+		<Route path="/search"
+            //<SearchBook booksOnShelf={books} changeShelf={this.changeShelf} />
+        />
       </div>
     )
   }
