@@ -4,6 +4,7 @@ import theBook from './theBook'
 class theShelf extends React.Component {
 render() {
  const { title, theBooks, changeShelf } = this.props
+ //console.log(theBooks)
         return (
             <div className="bookshelf">
                 <h2 className="bookshelf-title">{title}</h2>

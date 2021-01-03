@@ -15,7 +15,7 @@ class BooksList extends React.Component {
         </div>
         <div className="list-books-content">
 			<div>
-              <theShelf key="currentlyReading"
+              <theShelf key="currentlyReading" 
               title="Currently Reading" 
               changeShelf={changeShelf}  
               theBooks={books.filter(b => b.shelf === 'currentlyReading')}/>
@@ -27,7 +27,7 @@ class BooksList extends React.Component {
 
               <theShelf key="read" 
               title="Read"
-              changeShelf={changeShelf} 
+			  changeShelf={changeShelf} 
               theBooks={books.filter(b => b.shelf === 'read')}/>
             </div>
           </div>
