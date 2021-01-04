@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
-import theShelf from './theShelf'
+import TheShelf from './TheShelf'
 
 
 class BooksList extends React.Component {
@@ -15,17 +15,17 @@ class BooksList extends React.Component {
         </div>
         <div className="list-books-content">
 			<div>
-              <theShelf key="currentlyReading" 
+              <TheShelf key="currentlyReading" 
               title="Currently Reading" 
               changeShelf={changeShelf}  
               theBooks={books.filter(b => b.shelf === 'currentlyReading')}/>
 
-              <theShelf key="wantToRead" 
+              <TheShelf key="wantToRead" 
               title="Want To Read" 
 			  changeShelf={changeShelf} 
 			  theBooks={books.filter(b => b.shelf === 'wantToRead')}/>
 
-              <theShelf key="read" 
+              <TheShelf key="read" 
               title="Read"
 			  changeShelf={changeShelf} 
               theBooks={books.filter(b => b.shelf === 'read')}/>

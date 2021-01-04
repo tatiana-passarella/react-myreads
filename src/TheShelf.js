@@ -1,5 +1,5 @@
 import React from 'react';
-import theBook from './theBook'
+import TheBook from './TheBook'
 
 class theShelf extends React.Component {
 render() {
@@ -12,7 +12,7 @@ render() {
                     <ol className="books-grid">
                     { theBooks.map((book) => {
                         return (
-                            <theBook key={book.id} book={book} changeShelf={changeShelf} />
+                            <TheBook key={book.id} book={book} changeShelf={changeShelf} />
                         )
                       })
                     }
