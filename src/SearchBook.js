@@ -16,7 +16,7 @@ class SearchBook extends React.Component {
     this.setState({ query });
 
     if (query) {
-      BooksAPI.search(query.trim()).then(books => {
+      BooksAPI.search(query.trim(), 20).then(books => {
         books.length > 0
           ? this.setState({ booksFound: books, err: false })
           : this.setState({ booksFound: [], err: true });
