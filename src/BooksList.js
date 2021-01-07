@@ -11,7 +11,10 @@ class BooksList extends React.Component {
     return (
       <div className="list-books">
         <div className="list-books-title">
-          <h1>MyReads</h1>
+          <div className="title-container">
+            <h1 className="title">MyReads</h1><span className="myBooks-logo"></span>
+            <div className="clear"></div>
+          </div>
         </div>
         <div className="list-books-content">
 			<div>
