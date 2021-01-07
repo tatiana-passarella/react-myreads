@@ -1,8 +1,11 @@
 # My Reads
 
 My Reads is a bookshelf app that allows you to select and categorize books you have read, are currently reading, or want to read. 
+The project using React to build the application and an API server to record your books or search new ones.
 
-The project using React to build the application and an API server to record your books or search new ones
+## Live Demo:
+
+[https://react-nanodegree-myreads-project.netlify.app/](https://react-nanodegree-myreads-project.netlify.app/)
 
 ## Installation
 
@@ -32,7 +35,7 @@ Forked from [Udacity's myreads starter template repository](https://github.com/u
     ├── TheShelf.js # Component that render the books inside a shelf mapping over the books already recorded.
     ├── TheBook.js # Component that render a single book.
     ├── SearchBook.js # Component that perform the search through the provided API and render result.
-    ├── App.test.js # Used for testing. Provided with Create React App. Testing is encouraged, but not required.
+    ├── App.test.js # Used for testing.
     ├── BooksAPI.js # A JavaScript API for the provided Udacity backend. Instructions for the methods are below.
     ├── icons # Icons used in the app.
     │   ├── book.svg
