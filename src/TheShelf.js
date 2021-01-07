@@ -11,7 +11,7 @@ render() {
                     <ol className="books-grid">
                     { theBooks.map((book) => {
                         return (
-                            <TheBook key={book.id} book={book} changeShelf={changeShelf} />
+                            <TheBook key={book.id} book={book} myBooks={theBooks} changeShelf={changeShelf} />
                         )
                       })
                     }

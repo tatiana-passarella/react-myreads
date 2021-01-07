@@ -48,9 +48,9 @@ class SearchBook extends React.Component {
             <div>
               <h3>We found {booksFound.length} books </h3>
               <ol className="books-grid">
-                { booksFound.map((book) => {
+                { booksFound.map((mybook) => {
                         return (
-                            <TheBook key={book.id} book={book} changeShelf={changeShelf} />
+                            <TheBook key={mybook.id} book={mybook} myBooks={book} changeShelf={changeShelf} />
                         )
                       })
                     }
