@@ -45,7 +45,7 @@ changeShelf = (theBook, evt) => {
         <Route
           path="/search"
           render={({ history }) => (
-            <SearchBook changeShelf={this.changeShelf} />
+            <SearchBook book={this.state.books} changeShelf={this.changeShelf} />
           )}
         />
       </div>
